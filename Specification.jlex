@@ -1,0 +1,29 @@
+
+    //
+
+%%
+
+%unicode
+%line
+%column
+%class LextTest
+%function nextToken
+%type Token
+
+%{
+    //Inserção de código arbitrário
+    
+%}
+
+%init{
+
+%init}
+
+    //Definição de Macros
+%%
+
+<YYINITIAL>{
+
+}
+
+[^] {throw new RuntimeException("Illegal character < " + yyText() + ">"); }

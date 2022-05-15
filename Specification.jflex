@@ -1,4 +1,6 @@
-
+/*Autores: Fernando Dellão Menini 201935005,
+           Luccas de Macedo Sodré 201535013
+*/
     //Codigo do Usuário
 
 %%
@@ -42,21 +44,65 @@
 
     FimDeLinha = \r|\n|\r\n
     Brancos = {FimDeLinha} | [ \t\f]
-    numero = [:digit:][:digit:]*
-    identificador = [:lowercase:]
+    int = 0 | [1-9][:digit:]*
+    float = 0 | [1-9]*[.][0-9]+
+    variable_id = [:lowercase:][:jletterdigit: | '_']*
+    type_id = [:uppercase:][:jletterdigit: | '_']*
+    LineComment = "--" (.)* {FimDeLinha}
+    char = '[:lowecase:]' | '\\[n | t | b | r | ' | \\]'
+    dot = [.]
+    
+    /* Agora vamos definir algumas macros */
+
+logico = true|false
+
 %%
 
     //Regras léxicas
 
 <YYINITIAL>{
-
-    {identificador} {return symbol(TokenType.ID);}
-    {numero}        {return symbol(TokenType.NUM, Integer.parseInt(yytext()));}     
-    "="             {return symbol(TokenType.EQ);}
-    ";"             {return symbol(TokenType.SEMI);}
-    "*"             {return symbol(TokenType.TIMES);}
-    "+"             {return symbol(TokenType.PLUS);}
-    {Brancos}       { /* Não faz nada*/ }
+    "if"			{ return symbol(TokenType.IF);   }
+	"else"		    { return symbol(TokenType.ELSE); }
+    "true"		    { return symbol(TokenType.TRUE); }
+    "false"		    { return symbol(TokenType.FALSE);  }
+    "iterate" 		{ return symbol(TokenType.ITERATE);}
+    "read"			{ return symbol(TokenType.READ);  	}
+    "print"		    { return symbol(TokenType.PRINT);  }
+    "return" 		{ return symbol(TokenType.RETURN); }
+    "null" 			{ return symbol(TokenType.NULL);  	}
+    "new" 			{ return symbol(TokenType.NEW);  	}
+    {identificador} { return symbol(TokenType.ID);     }
+    {inteiro}       { return symbol(TokenType.INT);  	}
+    {float}         { return symbol(TokenType.FLOAT);  }
+    "("             { return symbol(TokenType.LEFT_PARENTHESIS);      }
+    ")"             { return symbol(TokenType.RIGHT_PARENTHESIS");      }
+    "["             { return symbol(TokenType.LEFT_SQUARE_BRACKETS");      }
+    "]"             { return symbol(TokenType.RIGHT_SQUARE_BRACKETS");      }
+    "{"             { return symbol(TokenType.LEFT_CURLY_BRACES");      }
+    "}"             { return symbol(TokenType.RIGHT_CURLY_BRACES");      }
+	">"             { return symbol(TokenType.GREATER_THAN");      }
+	";"             { return symbol(TokenType.SEMI");      }
+	"."             { return symbol(TokenType.DOT");      }
+	","             { return symbol(TokenType.COMMA");      }
+    "::"            { return symbol(TokenType.TYPE_DEFINITION);     }
+	"="             { return symbol(TokenType.EQ");      }
+    "<"             { return symbol(TokenType.LESS_THAN");      }
+    "=="            { return symbol(TokenType.EQUAL_TO");     }
+    "!="            { return symbol(TokenType.DIFFERENT");     }
+	"+"             { return symbol(TokenType.PLUS");   }
+	"-"             { return symbol(TokenType.MINUS");      }
+	"*"             { return symbol(TokenType.TIMES");      }
+	"/"             { return symbol(TokenType.DIVISION");      }
+	"%"             { return symbol(TokenType.MODULUS");      }
+	"&&"            { return symbol(TokenType.LOGICAL_AND");    }
+	"!"             { return symbol(TokenType.LOGICAL_NOT");      }
+    "{-"            { yybegin(COMMENT);             }
+    {LineComment}   {                               }
 }
 
-[^]                 {throw new RuntimeException("Illegal character <" + yytext() + ">"); }
+<COMMENT>{
+   "{-"     { yybegin(YYINITIAL); } [^"-}"]  {                     }
+}
+
+// erros
+[^]                 { throw new RuntimeException("Illegal character <"+yytext()+">"); }

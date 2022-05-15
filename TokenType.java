@@ -7,12 +7,15 @@ public enum TokenType {
     CHAR,
     EQ,
     PLUS,
+    MINUS,
     TIMES,
     SEMI,
     LEFT_PARENTHESIS,
     RIGHT_PARENTHESIS,
-    LEFT_CURLY_BRACKETS,
-    RIGHT_CURLY_BRACKETS,
+    LEFT_SQUARE_BRACKETS,
+    RIGHT_SQUARE_BRACKETS,
+    LEFT_CURLY_BRACES,
+    RIGHT_CURLY_BRACES,
     TYPE_DEFINITION,
     DATA,  
     IF,
@@ -32,6 +35,7 @@ public enum TokenType {
     DIVISION,
     MODULUS,
     LOGICAL_NOT,
-    LOGICAL_END,
-    POINT
+    LOGICAL_AND,
+    DOT,
+    COMMA
 }

@@ -1,0 +1,7 @@
+#!/bin/sh
+
+#Autores: Fernando Dellão Menini 201935005,
+#         Luccas de Macedo Sodré 201535013
+
+jflex Specification.jflex
+javac *.java

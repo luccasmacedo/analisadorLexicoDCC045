@@ -3,4 +3,4 @@
 ### Como Rodar
 
 - Em Unix/Linux rode `./build` para compilar
-- Execute com `java Main sample1.txt`
+- Execute com `java Main samples/sample1.txt`

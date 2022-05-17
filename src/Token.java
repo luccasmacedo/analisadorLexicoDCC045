@@ -1,3 +1,4 @@
+package src;
 public class Token {
     public int l, c;
     public TokenType type;

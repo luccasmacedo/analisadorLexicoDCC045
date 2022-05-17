@@ -3,10 +3,12 @@
 */
     //Codigo do Usuário
 
+package src;
 %%
 
     //Opções e declarações
-
+    
+%public
 %unicode
 %line
 %column

@@ -3,5 +3,5 @@
 #Autores: Fernando Dellão Menini 201935005,
 #         Luccas de Macedo Sodré 201535013
 
-jflex Specification.jflex
+jflex src/Specification.jflex
 javac *.java

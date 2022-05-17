@@ -1,3 +1,4 @@
+package src;
 public enum TokenType {
     VARIABLE_ID,
     TYPE_ID,

@@ -1,6 +1,8 @@
 import java.io.FileReader;
 import java.io.IOException;
 
+import src.*;
+
 public class Main {
     public static void main(String[] args) throws IOException {
         Lexer lx = new Lexer(new FileReader(args[0]));

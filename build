@@ -3,5 +3,11 @@
 #Autores: Fernando Dellão Menini 201935005,
 #         Luccas de Macedo Sodré 201535013
 
-jflex src/Specification.jflex
-javac *.java
+if [ "$1" == "clean" ]; then
+		rm *.class src/*.class
+		echo "Todos arquivos '.class' apagados."
+else
+		jflex src/Specification.jflex
+		javac *.java
+
+fi

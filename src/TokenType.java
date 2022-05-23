@@ -4,7 +4,6 @@ public enum TokenType {
     TYPE_ID,
     INT,
     FLOAT,
-    BOOL,
     CHAR,
     EQ,
     PLUS,
@@ -18,12 +17,12 @@ public enum TokenType {
     LEFT_CURLY_BRACES,
     RIGHT_CURLY_BRACES,
     TYPE_DEFINITION,
-    DATA,  
+    DATA,
     IF,
     ELSE,
     ITERATE,
     READ,
-    PRINT, 
+    PRINT,
     RETURN,
     TRUE,
     FALSE,
@@ -38,5 +37,6 @@ public enum TokenType {
     LOGICAL_NOT,
     LOGICAL_AND,
     DOT,
-    COMMA
+    COMMA,
+		RETURN_TYPE
 }

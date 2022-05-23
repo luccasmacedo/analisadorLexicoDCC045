@@ -46,14 +46,13 @@ package src;
 
     FimDeLinha = \r|\n|\r\n
     Brancos = {FimDeLinha} | [ \t\f]
-    int = 0 | [1-9][:digit:]*
-    float = 0 | [1-9]*[.][0-9]+
-    variable_id = [:lowercase:][:jletterdigit: | '_']*
-		type_id = [:uppercase:][:jletterdigit: | '_']*
+    int = 0 | [1-9][0-9]*
+    float = (0|[1-9][0-9]*)?[.][0-9]+
+    variable_id = [a-z][a-z|A-Z|0-9_]*
+    type_id = [A-Z][a-z|A-Z|0-9_]*
     LineComment = "--" (.)* {FimDeLinha}
-    char = '[:lowecase:]' | '\\[n | t | b | r | ' | \\]'
+    char = '[a-z]'|'\\[n|t|b|r|'|\\]'
     dot = [.]
-//		logico = true|false
 
     /* Agora vamos definir algumas macros */
 
@@ -94,6 +93,7 @@ package src;
 	"."				{ return symbol(TokenType.DOT);      				}
 	","				{ return symbol(TokenType.COMMA);      				}
 	"::"			{ return symbol(TokenType.TYPE_DEFINITION);     	}
+	":"			{ return symbol(TokenType.RETURN_TYPE);     	}
 	"="				{ return symbol(TokenType.EQ);      				}
 	"<"				{ return symbol(TokenType.LESS_THAN);      			}
 	"=="			{ return symbol(TokenType.EQUAL_TO);     			}
